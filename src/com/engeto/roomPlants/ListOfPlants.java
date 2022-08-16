@@ -3,6 +3,7 @@ package com.engeto.roomPlants;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,6 +41,13 @@ public class ListOfPlants {
     }
     catch (FileNotFoundException e){
         throw new PlantException("Soubor "+filename+"nebyl nalezen."+e.getLocalizedMessage());
+    }
+    catch (DateTimeParseException e){
+        throw new PlantException("Chybnì zapsané datum v souboru "+filename+" "+e.getLocalizedMessage());
+    }
+    catch (NumberFormatException e){
+        throw new PlantException("Chybnì zapsaná frekvence zalévání kvìtiny v souboru "+filename+" "+
+                e.getLocalizedMessage());
     }
     return list;
     }

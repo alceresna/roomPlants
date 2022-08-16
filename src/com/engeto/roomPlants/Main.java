@@ -4,7 +4,7 @@ package com.engeto.roomPlants;
 public class Main {
     public static void main(String[] args) {
 
-        ListOfPlants list = new ListOfPlants();
+        ListOfPlants list;
 
         try {
             list = ListOfPlants.importFromFile("kvetiny.txt");
