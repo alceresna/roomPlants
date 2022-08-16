@@ -33,8 +33,7 @@ public class ListOfPlants {
                 LocalDate watering = LocalDate.parse(string[2]);
                 LocalDate planted = LocalDate.parse(string[3]);
 
-                Plant plant = new Plant(name,planted,frekvencyOfWatering);
-                plant.setWatering(watering);
+                Plant plant = new Plant(name,planted,watering,frekvencyOfWatering);
                 list.addPlant(plant);
             }
             }

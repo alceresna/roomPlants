@@ -21,6 +21,10 @@ public class Plant {
         if(frekvencyOfWatering <= 0) throw new PlantException("Frekvence zálivky musí být v?t?í ne? nula!");
         this.frekvencyOfWatering = frekvencyOfWatering;
     }
+    public Plant(String name, LocalDate planted, LocalDate watering, int frekvencyOfWatering) throws PlantException {
+
+        this(name,"",planted,watering,frekvencyOfWatering);
+    }
 
     public Plant(String name, LocalDate planted, int frekvencyOfWatering) throws PlantException {
 
