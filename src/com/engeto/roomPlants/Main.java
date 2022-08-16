@@ -12,7 +12,7 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        list.printWateringInfoForAllPlants();
+        System.out.println(list.getWateringInfoForAllPlants());
 
         }
     }

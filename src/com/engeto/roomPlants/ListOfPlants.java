@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ListOfPlants {
@@ -62,10 +61,13 @@ public class ListOfPlants {
         return listOfPlants.get(index);
     }
 
-    public void printWateringInfoForAllPlants(){
+    public StringBuilder getWateringInfoForAllPlants(){
+
+        StringBuilder info = new StringBuilder();
 
         for (Plant plant:this.listOfPlants) {
-            System.out.println(plant.getWateringInfo());
+            info.append(plant.getWateringInfo());
         }
+        return info;
     }
 }
