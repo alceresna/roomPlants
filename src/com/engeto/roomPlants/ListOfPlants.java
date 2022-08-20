@@ -13,30 +13,21 @@ public class ListOfPlants {
 
         ListOfPlants list = new ListOfPlants();
         String line;
+        Plant plant;
 
     try(Scanner sc = new Scanner(new File(filename))){
         while(sc.hasNextLine()){
             line = sc.nextLine();
-            String[] string = line.split("\t");
-            String name = string[0];
-            if(string.length == 5){
-                String notes = string[1];
-                int frekvencyOfWatering = Integer.parseInt(string[2]);
-                LocalDate watering = LocalDate.parse(string[3]);
-                LocalDate planted = LocalDate.parse(string[4]);
+            String[] items = line.split("\t");
+            String name = items[0];
+            String notes = items[1];
+            int frekvencyOfWatering = Integer.parseInt(items[2]);
+            LocalDate watering = LocalDate.parse(items[3]);
+            LocalDate planted = LocalDate.parse(items[4]);
 
-                Plant plant = new Plant(name,notes,planted,watering,frekvencyOfWatering);
-                list.addPlant(plant);
+            plant = new Plant(name,notes,planted,watering,frekvencyOfWatering);
+            list.addPlant(plant);
         }
-            else if(string.length == 4) {
-                int frekvencyOfWatering = Integer.parseInt(string[1]);
-                LocalDate watering = LocalDate.parse(string[2]);
-                LocalDate planted = LocalDate.parse(string[3]);
-
-                Plant plant = new Plant(name,planted,watering,frekvencyOfWatering);
-                list.addPlant(plant);
-            }
-            }
     }
     catch (FileNotFoundException e){
         throw new PlantException("Soubor "+filename+"nebyl nalezen."+e.getLocalizedMessage());
