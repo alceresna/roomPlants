@@ -3,23 +3,24 @@ package com.engeto.roomPlants;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ListOfPlants {
 
     private List<Plant> listOfPlants = new ArrayList<>();
+
+    private Set<LocalDate> setOfWaterings = new HashSet<>();
     public static ListOfPlants importFromFile(String filename) throws PlantException {
 
         ListOfPlants list = new ListOfPlants();
         String line;
         Plant plant;
+        String[] items;
 
     try(Scanner sc = new Scanner(new File(filename))){
         while(sc.hasNextLine()){
             line = sc.nextLine();
-            String[] items = line.split("\t");
+            items = line.split("\t");
             String name = items[0];
             String notes = items[1];
             int frekvencyOfWatering = Integer.parseInt(items[2]);
@@ -28,6 +29,7 @@ public class ListOfPlants {
 
             plant = new Plant(name,notes,planted,watering,frekvencyOfWatering);
             list.addPlant(plant);
+            list.setOfWaterings.add(watering);
         }
     }
     catch (FileNotFoundException e){
@@ -86,4 +88,15 @@ public class ListOfPlants {
         }
         return info;
     }
+
+    public List<Plant> getListOfPlants() {
+
+        return listOfPlants;
+    }
+
+    public Set<LocalDate> getSetOfWaterings() {
+
+        return new HashSet<>(setOfWaterings);
+    }
+
 }

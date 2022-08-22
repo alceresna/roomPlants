@@ -1,8 +1,9 @@
 package com.engeto.roomPlants;
 
 import java.time.LocalDate;
+import java.util.Collections;
 
-public class Plant {
+public class Plant implements Comparable<Plant> {
 
     private String name;
     private String notes;
@@ -94,5 +95,10 @@ public class Plant {
         String str = getName()+DELIMITER+getNotes()+DELIMITER+getFrekvencyOfWatering()+DELIMITER+getWatering()+
                 DELIMITER+getPlanted();
         return str;
+    }
+
+    @Override
+    public int compareTo(Plant plant) {
+        return getName().compareTo(plant.getName());
     }
 }
