@@ -10,6 +10,8 @@ public class Plant {
     private LocalDate watering;
     private int frekvencyOfWatering;
 
+    private static final String DELIMITER = "\t";
+
     public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frekvencyOfWatering) throws PlantException {
 
         this.name = name;
@@ -85,5 +87,12 @@ public class Plant {
              "\nDatum doporu?ené dal?í zálivky: "+this.watering.plusDays(7).toString()+"\n";
 
         return info;
+    }
+
+    @Override
+    public String toString() {
+        String str = getName()+DELIMITER+getNotes()+DELIMITER+getFrekvencyOfWatering()+DELIMITER+getPlanted()+
+                DELIMITER+getWatering();
+        return str;
     }
 }

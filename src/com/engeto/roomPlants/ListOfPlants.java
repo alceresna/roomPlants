@@ -1,7 +1,6 @@
 package com.engeto.roomPlants;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import java.util.Scanner;
 
 public class ListOfPlants {
 
+    private ArrayList<Plant> listOfPlants = new ArrayList<>();
     public static ListOfPlants importFromFile(String filename) throws PlantException {
 
         ListOfPlants list = new ListOfPlants();
@@ -42,7 +42,17 @@ public class ListOfPlants {
     return list;
     }
 
-    private ArrayList<Plant> listOfPlants = new ArrayList<>();
+    public void exportToFile(String filename) throws IOException {
+    try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
+
+        for (Plant plant:listOfPlants) {
+            writer.println(plant.toString());
+        }
+    }
+      catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+    }
 
     public void addPlant(Plant plant){
 
