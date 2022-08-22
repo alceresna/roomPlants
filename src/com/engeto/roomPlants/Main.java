@@ -43,7 +43,7 @@ public class Main {
             throw new PlantException(e.getLocalizedMessage());
         }
 
-        list.removePlantByName("Sukulent v koupelne");
+        list.removePlantByName("Sukulent v koupelnÄ›");
 
         try {
             list.exportToFile(FILENAMEOUT);
@@ -55,14 +55,14 @@ public class Main {
 
         Collections.sort(list.getListOfPlants());
 
-        System.out.println("\nseznam rostlin se?azený podle jména:\n"+list.getListOfPlants());
+        System.out.println("\nseznam rostlin se?azenï¿½ podle jmï¿½na:\n"+list.getListOfPlants());
 
         Collections.sort(list.getListOfPlants(),new PlantWateringComparator());
 
-        System.out.println("\nseznam rostlin se?azený podle data zálivky:\n"+list.getListOfPlants());
+        System.out.println("\nseznam rostlin se?azenï¿½ podle data zï¿½livky:\n"+list.getListOfPlants());
 
-        System.out.println("\ndny,kdy probíhala poslední zálivka:\n"+list.getSetOfWaterings());
+        System.out.println("\ndny,kdy probï¿½hala poslednï¿½ zï¿½livka:\n"+list.getSetOfWaterings());
 
-        System.out.println("\ndny,kdy probíhala poslední zálivka za posledních sedm dní:\n"+getSetOfWateringsSevenDays(list));
+        System.out.println("\ndny,kdy probï¿½hala poslednï¿½ zï¿½livka za poslednï¿½ch sedm dnï¿½:\n"+getSetOfWateringsSevenDays(list));
     }
     }
