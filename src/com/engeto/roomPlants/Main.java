@@ -13,6 +13,16 @@ public class Main {
     public static final String FILENAMEIN = "kvetiny.txt";
     public static final String FILENAMEOUT = "nove kvetiny.txt";
 
+    public static Set<LocalDate> getSetOfWateringsSevenDays(ListOfPlants list){
+
+        Set<LocalDate> setWaterings = list.getSetOfWaterings();
+        Set<LocalDate> setWateringsSevenDays = new HashSet<>();
+
+        for (LocalDate date:setWaterings) {
+            if(ChronoUnit.DAYS.between(date, LocalDate.now()) <= 7) setWateringsSevenDays.add(date);
+        }
+        return setWateringsSevenDays;
+    }
     public static void main(String[] args) throws PlantException {
 
         ListOfPlants list;
@@ -53,5 +63,6 @@ public class Main {
 
         System.out.println("\ndny,kdy probíhala poslední zálivka:\n"+list.getSetOfWaterings());
 
+        System.out.println("\ndny,kdy probíhala poslední zálivka za posledních sedm dní:\n"+getSetOfWateringsSevenDays(list));
     }
     }
