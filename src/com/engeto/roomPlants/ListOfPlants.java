@@ -4,11 +4,12 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ListOfPlants {
 
-    private ArrayList<Plant> listOfPlants = new ArrayList<>();
+    private List<Plant> listOfPlants = new ArrayList<>();
     public static ListOfPlants importFromFile(String filename) throws PlantException {
 
         ListOfPlants list = new ListOfPlants();
@@ -33,10 +34,10 @@ public class ListOfPlants {
         throw new PlantException("Soubor "+filename+"nebyl nalezen."+e.getLocalizedMessage());
     }
     catch (DateTimeParseException e){
-        throw new PlantException("Chybnì zapsané datum v souboru "+filename+" "+e.getLocalizedMessage());
+        throw new PlantException("Chybn? zapsan? datum v souboru "+filename+" "+e.getLocalizedMessage());
     }
     catch (NumberFormatException e){
-        throw new PlantException("Chybnì zapsaná frekvence zalévání kvìtiny v souboru "+filename+" "+
+        throw new PlantException("Chybn? zapsan? frekvence zal?v?n? kv?tiny v souboru "+filename+" "+
                 e.getLocalizedMessage());
     }
     return list;
@@ -68,6 +69,13 @@ public class ListOfPlants {
 
         return listOfPlants.get(index);
     }
+
+   public void removePlantByName(String name) {
+
+       for (Plant plant:listOfPlants) {
+           if(plant.getName().equals(name)) removePlant(plant);
+       }
+   }
 
     public StringBuilder getWateringInfoForAllPlants(){
 

@@ -84,15 +84,15 @@ public class Plant {
     public String getWateringInfo() {
 
      String info = "Název kv?tiny:\n"+this.name+"\nDatum poslední zálivky: "+this.watering.toString()+
-             "\nDatum doporu?ené dal?í zálivky: "+this.watering.plusDays(7).toString()+"\n";
+             "\nDatum doporu?ené dal?í zálivky: "+this.watering.plusDays(getFrekvencyOfWatering()).toString()+"\n";
 
         return info;
     }
 
     @Override
     public String toString() {
-        String str = getName()+DELIMITER+getNotes()+DELIMITER+getFrekvencyOfWatering()+DELIMITER+getPlanted()+
-                DELIMITER+getWatering();
+        String str = getName()+DELIMITER+getNotes()+DELIMITER+getFrekvencyOfWatering()+DELIMITER+getWatering()+
+                DELIMITER+getPlanted();
         return str;
     }
 }
