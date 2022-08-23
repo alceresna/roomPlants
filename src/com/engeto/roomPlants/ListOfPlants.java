@@ -10,6 +10,8 @@ public class ListOfPlants {
     private List<Plant> listOfPlants = new ArrayList<>();
 
     private Set<LocalDate> setOfWaterings = new HashSet<>();
+
+    // reads items from text file and stores them to list
     public static ListOfPlants importFromFile(String filename) throws PlantException {
 
         ListOfPlants list = new ListOfPlants();
@@ -45,6 +47,7 @@ public class ListOfPlants {
     return list;
     }
 
+    //loads items from list and prints them to text file
     public void exportToFile(String filename) throws IOException {
     try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
 
@@ -94,6 +97,7 @@ public class ListOfPlants {
         return listOfPlants;
     }
 
+    // returns set of days when happened a last watering of any plant
     public Set<LocalDate> getSetOfWaterings() {
 
         return new HashSet<>(setOfWaterings);

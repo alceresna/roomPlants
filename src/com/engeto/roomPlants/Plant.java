@@ -5,6 +5,7 @@ import java.util.Collections;
 
 public class Plant implements Comparable<Plant> {
 
+
     private String name;
     private String notes;
     private LocalDate planted;
@@ -18,10 +19,10 @@ public class Plant implements Comparable<Plant> {
         this.name = name;
         this.notes = notes;
         this.planted = planted;
-        if(watering.isBefore(planted)) throw new PlantException("Datum poslední zálivky nesmí být star?í" +
-                " ne? datum zasazení rostliny.");
+        if(watering.isBefore(planted)) throw new PlantException("Datum poslednï¿½ zï¿½livky nesmï¿½ bï¿½t star?ï¿½" +
+                " ne? datum zasazenï¿½ rostliny.");
         this.watering = watering;
-        if(frekvencyOfWatering <= 0) throw new PlantException("Frekvence zálivky musí být v?t?í ne? nula!");
+        if(frekvencyOfWatering <= 0) throw new PlantException("Frekvence zï¿½livky musï¿½ bï¿½t v?t?ï¿½ ne? nula!");
         this.frekvencyOfWatering = frekvencyOfWatering;
     }
     public Plant(String name, LocalDate planted, LocalDate watering, int frekvencyOfWatering) throws PlantException {
@@ -68,8 +69,8 @@ public class Plant implements Comparable<Plant> {
     }
 
     public void setWatering(LocalDate watering) throws PlantException {
-        if(watering.isBefore(planted)) throw new PlantException("Datum poslední zálivky nesmí být star?í" +
-                " ne? datum zasazení rostliny.");
+        if(watering.isBefore(planted)) throw new PlantException("Datum poslednï¿½ zï¿½livky nesmï¿½ bï¿½t star?ï¿½" +
+                " ne? datum zasazenï¿½ rostliny.");
         this.watering = watering;
     }
 
@@ -78,14 +79,14 @@ public class Plant implements Comparable<Plant> {
     }
 
     public void setFrekvencyOfWatering(int frekvencyOfWatering) throws PlantException {
-        if(frekvencyOfWatering <= 0) throw new PlantException("Frekvence zálivky musí být v?t?í ne? nula!");
+        if(frekvencyOfWatering <= 0) throw new PlantException("Frekvence zï¿½livky musï¿½ bï¿½t v?t?ï¿½ ne? nula!");
         this.frekvencyOfWatering = frekvencyOfWatering;
     }
 
     public String getWateringInfo() {
 
-     String info = "Název kv?tiny:\n"+this.name+"\nDatum poslední zálivky: "+this.watering.toString()+
-             "\nDatum doporu?ené dal?í zálivky: "+this.watering.plusDays(getFrekvencyOfWatering()).toString()+"\n";
+     String info = "Nï¿½zev kv?tiny:\n"+this.name+"\nDatum poslednï¿½ zï¿½livky: "+this.watering.toString()+
+             "\nDatum doporu?enï¿½ dal?ï¿½ zï¿½livky: "+this.watering.plusDays(getFrekvencyOfWatering()).toString()+"\n";
 
         return info;
     }
@@ -97,6 +98,7 @@ public class Plant implements Comparable<Plant> {
         return str;
     }
 
+    // sorts plants in list by name
     @Override
     public int compareTo(Plant plant) {
         return getName().compareTo(plant.getName());

@@ -13,7 +13,8 @@ public class Main {
     public static final String FILENAMEIN = "kvetiny.txt";
     public static final String FILENAMEOUT = "nove kvetiny.txt";
 
-    public static Set<LocalDate> getSetOfWateringsSevenDays(ListOfPlants list){
+    // returns set of days for last seven days when happened a last watering of any plant
+    public static Set<LocalDate> getsetofwateringssevendays(ListOfPlants list){
 
         Set<LocalDate> setWaterings = list.getSetOfWaterings();
         Set<LocalDate> setWateringsSevenDays = new HashSet<>();
@@ -27,6 +28,7 @@ public class Main {
 
         ListOfPlants list;
 
+        // reads items from text file and stores them to list
         try {
             list = ListOfPlants.importFromFile(FILENAMEIN);
         } catch (PlantException e) {
@@ -45,6 +47,7 @@ public class Main {
 
         list.removePlantByName("Sukulent v koupelně");
 
+        //loads items from list and prints them to text file
         try {
             list.exportToFile(FILENAMEOUT);
         } catch (IOException e) {
@@ -53,16 +56,18 @@ public class Main {
 
         System.out.println("seznam rostlin:\n"+list.getListOfPlants());
 
+        // sorts plants in list by name
         Collections.sort(list.getListOfPlants());
 
         System.out.println("\nseznam rostlin se?azen� podle jm�na:\n"+list.getListOfPlants());
 
+        // sorts plants in list by date of last watering
         Collections.sort(list.getListOfPlants(),new PlantWateringComparator());
 
         System.out.println("\nseznam rostlin se?azen� podle data z�livky:\n"+list.getListOfPlants());
 
         System.out.println("\ndny,kdy prob�hala posledn� z�livka:\n"+list.getSetOfWaterings());
 
-        System.out.println("\ndny,kdy prob�hala posledn� z�livka za posledn�ch sedm dn�:\n"+getSetOfWateringsSevenDays(list));
+        System.out.println("\ndny,kdy prob�hala posledn� z�livka za posledn�ch sedm dn�:\n"+ getsetofwateringssevendays(list));
     }
     }
