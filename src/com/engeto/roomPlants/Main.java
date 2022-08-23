@@ -50,7 +50,7 @@ public class Main {
         //loads items from list and prints them to text file
         try {
             list.exportToFile(FILENAMEOUT);
-        } catch (IOException e) {
+        } catch (PlantException e) {
             throw new PlantException(e.getLocalizedMessage());
         }
 

@@ -48,7 +48,7 @@ public class ListOfPlants {
     }
 
     //loads items from list and prints them to text file
-    public void exportToFile(String filename) throws IOException {
+    public void exportToFile(String filename) throws PlantException {
     try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
 
         for (Plant plant:listOfPlants) {
@@ -56,7 +56,7 @@ public class ListOfPlants {
         }
     }
       catch (IOException e) {
-        throw new RuntimeException(e);
+        throw new PlantException("Nepodařil se zápis do souboru "+filename+" "+e.getLocalizedMessage());
     }
     }
 
