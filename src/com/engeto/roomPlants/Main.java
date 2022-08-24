@@ -56,13 +56,11 @@ public class Main {
 
         System.out.println("seznam rostlin:\n"+list.getListOfPlants());
 
-        // sorts plants in list by name
-        Collections.sort(list.getListOfPlants());
+        list.sortByName();
 
         System.out.println("\nseznam rostlin se?azen� podle jm�na:\n"+list.getListOfPlants());
 
-        // sorts plants in list by date of last watering
-        Collections.sort(list.getListOfPlants(),new PlantWateringComparator());
+        list.sortByWatering();
 
         System.out.println("\nseznam rostlin se?azen� podle data z�livky:\n"+list.getListOfPlants());
 

@@ -103,4 +103,15 @@ public class ListOfPlants {
         return new HashSet<>(setOfWaterings);
     }
 
+    // sorts plants in list by name
+    public void sortByName() {
+
+        Collections.sort(getListOfPlants());
+    }
+
+    // sorts plants in list by date of last watering
+    public void sortByWatering() {
+
+        Collections.sort(getListOfPlants(),new PlantWateringComparator());
+    }
 }
