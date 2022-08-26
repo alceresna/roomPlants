@@ -1,10 +1,8 @@
 
-package com.engeto.roomPlants;
+package com.engeto.roomplants;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.engeto.roomPlants;
+package com.engeto.roomplants;
 
 import java.util.Comparator;
 

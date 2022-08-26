@@ -1,7 +1,6 @@
-package com.engeto.roomPlants;
+package com.engeto.roomplants;
 
 import java.time.LocalDate;
-import java.util.Collections;
 
 public class Plant implements Comparable<Plant> {
 
